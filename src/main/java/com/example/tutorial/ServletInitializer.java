@@ -1,4 +1,4 @@
-package com.example.spring_boot_tutorial;
+package com.example.tutorial;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
