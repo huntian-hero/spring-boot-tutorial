@@ -47,6 +47,7 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         if (userService.findById(id).isPresent()) {
             userService.deleteById(id);
+
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.notFound().build();
