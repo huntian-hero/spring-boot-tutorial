@@ -43,6 +43,7 @@ public class AuthController {
     @PostMapping("/login")
     @Operation(summary = "用户登录")
     public ResponseEntity<Map<String, String>> login(@Valid @RequestBody AuthRequest authRequest) {
+        var a = new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword());
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
         );
