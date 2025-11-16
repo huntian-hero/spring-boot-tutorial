@@ -1,12 +1,12 @@
 package com.example.tutorial.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "users")
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
