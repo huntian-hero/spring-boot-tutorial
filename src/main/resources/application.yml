@@ -6,14 +6,18 @@ spring:
     username: postgres
     password: 123456@Tan
     driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+    defer-datasource-initialization: true
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
@@ -22,3 +26,12 @@ springdoc:
 jwt:
   secret: 11Xrd+xmpkJ5+x3pJARWTf6kCdT999fjV6aposKLrTU=
   expiration: 86400000
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto # 主键自增

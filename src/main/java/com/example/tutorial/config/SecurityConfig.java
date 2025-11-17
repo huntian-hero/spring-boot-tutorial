@@ -33,17 +33,7 @@ import java.util.Map;
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
-  @Autowired private UserDetailsService userDetailsService;
-
   @Autowired private JwtAuthenticationFilter jwtAuthenticationFilter;
-
-  @Bean
-  public DaoAuthenticationProvider authenticationProvider() {
-    DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-    authProvider.setUserDetailsService(userDetailsService);
-    authProvider.setPasswordEncoder(passwordEncoder());
-    return authProvider;
-  }
 
   @Bean
   public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig)
@@ -74,7 +64,6 @@ public class SecurityConfig {
                     .anyRequest()
                     .authenticated())
         .formLogin(Customizer.withDefaults());
-    //    http.authenticationProvider(authenticationProvider());
     http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
     return http.build();
   }
